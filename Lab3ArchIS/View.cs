@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using NLog;
 using Server.Csv;
 using Server.DataBase;
+using Server.Entities;
 using ServerClientConnection;
 
 namespace Lab3ArchIS
@@ -114,6 +115,10 @@ namespace Lab3ArchIS
                 case "DBAddRecord":
                     DBController.GetInstance().AddRecord(con.Content[0]);
                     logger.Info("Client succesfully added the record");
+                    break;
+                case "DBEditRecord":
+                    DBController.GetInstance().EditRecord(con.Content);
+                    con.Content = new List<string> { "True" };
                     break;
                 #endregion
                 case "Shutdown":

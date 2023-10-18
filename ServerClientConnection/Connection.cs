@@ -14,7 +14,7 @@ namespace ServerClientConnection
             Content = content;
         }
 
-        public Connection(string act, string content) : this(act, new List<string> { content }) { }
+        public Connection(string act, string content) : this(act, new List<string> { content } ) { }
 
         public string GetJson()
         {

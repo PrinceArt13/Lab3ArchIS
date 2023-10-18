@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace Server.DataBase
 {
-    class DBhandler
+    public class DBhandler
     {
         //Guid g = Guid.NewGuid();
 
@@ -43,12 +43,6 @@ namespace Server.DataBase
         {
             using PrintsevContext context = new();
             var entities = context.Set<Student>();
-            //List<Student> studentsList = new();
-            //foreach (var ent in entities.OrderBy(x => x.StudentId).ToList())
-            //{
-            //    studentsList.Add(ent);
-            //}
-            //return studentsList;
             return new List<Student> { entities.OrderBy(x => x.StudentId).ToList()[number - 1] };
         }
 
@@ -57,15 +51,23 @@ namespace Server.DataBase
             using PrintsevContext context = new();
             var entities = context.Set<Student>();
             Student student = new();
-            entities.Remove(entities.OrderBy(x => x.StudentId).ToList().ElementAt(recordNumber - 1));
+            entities.Remove(entities.OrderBy(x => x.StudentId).ToList().ElementAt(recordNumber));
             context.SaveChanges();
         }
 
-        public void StudentAdd(Student student)
+        public void EditRecord(int num, string firstname, string lastname, string group, int grant, int course, bool sex)
         {
-            //File.AppendAllText(path, ConvertStudentToText(student));
+            using var context = new PrintsevContext();
+            var entities = context.Set<Student>();
+            Student student = entities.OrderBy(x => x.StudentId).ToList().ElementAt(num);
+            student.FirstName = firstname;
+            student.LastName = lastname;
+            student.Group = group;
+            student.Grant = grant;
+            student.Course = course;
+            student.Sex = sex;
+            entities.Update(student);
+            context.SaveChanges();
         }
-
-        
     }
 }

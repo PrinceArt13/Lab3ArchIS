@@ -26,7 +26,8 @@ namespace Server.DataBase
 
         public string GetString(List<string> records, int pos)
         {
-            string result = pos.ToString() + " | ";
+            //string result = pos.ToString() + " | ";
+            string result = "";
             foreach (string rec in records)
                 result += string.Format("{0,15}", rec + " | ");
             return result;
@@ -44,6 +45,10 @@ namespace Server.DataBase
             }
             return outputRecords;
         }
+        //public List<Student> GetAllRecords()
+        //{
+        //    return dbhandler.LoadAll();
+        //}
 
         public List<string> GetSepRecord(int number)
         {
@@ -75,6 +80,18 @@ namespace Server.DataBase
             student.Sex = bool.Parse(lines[5]);
             entries.Add(student);
             context.SaveChanges();
+        }
+        public void EditRecord(List<string> data)
+        {
+            try
+            {
+                dbhandler.EditRecord(int.Parse(data[0]), data[1], data[2], data[3], int.Parse(data[4]),
+                    int.Parse(data[5]), bool.Parse(data[6]));
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

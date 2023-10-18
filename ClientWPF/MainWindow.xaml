@@ -1,0 +1,53 @@
+﻿<Window x:Class="ClientWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1050" ResizeMode="NoResize">
+    <Grid Margin="0,0,10,-6">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--<Button Content="Вывести элементы" Margin="14,362,636,30" Command="{Binding GetAllRecordsDB}"/>-->
+        <DataGrid IsReadOnly="True" HorizontalAlignment="Left" Height="373" Margin="14,28,0,0" VerticalAlignment="Top" Width="436" AutoGenerateColumns="True" ItemsSource="{Binding AllRecords}" SelectedIndex="{Binding SelectedStudentIndex}" SelectedItem="{Binding SelectedStudent}"/>
+        <Button Content="Удалить запись" HorizontalAlignment="Left" Height="58" Margin="468,343,0,0" VerticalAlignment="Top" Width="110" Command="{Binding DeleteRecordDB}"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="563,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Text="{Binding FirstName}"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="563,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Text="{Binding LastName}"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="563,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167" Text="{Binding Group}"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="563,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Text="{Binding Grant}"/>
+        <TextBox HorizontalAlignment="Left" Height="35" Margin="563,189,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167" Text="{Binding Course}"/>
+        <ComboBox HorizontalAlignment="Left" Height="35" Margin="563,229,0,0" VerticalAlignment="Top" Width="167" SelectedIndex="{Binding Sex}">
+            <ComboBoxItem Content="Женский"/>
+            <ComboBoxItem Content="Мужской"/>
+        </ComboBox>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="520,29,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="35" Width="38"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="499,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="35" Width="59"/>
+        <Label Content="Группа" HorizontalAlignment="Left" Margin="510,109,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="35" Width="48"/>
+        <Label Content="Стипендия" HorizontalAlignment="Left" Margin="488,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="35" Width="70"/>
+        <Label Content="Курс" HorizontalAlignment="Left" Margin="520,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="35" Width="38"/>
+        <Label Content="Пол" HorizontalAlignment="Left" Margin="520,229,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="35" Width="38"/>
+        <Button Content="Добавить" HorizontalAlignment="Left" Height="35" Margin="606,269,0,0" VerticalAlignment="Top" Width="80" Command="{Binding AddRecordDB}"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="816,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Text="{Binding SelectedStudent.FirstName}"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="816,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Text="{Binding SelectedStudent.LastName}"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="816,117,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167" Text="{Binding SelectedStudent.Group}"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="816,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Text="{Binding SelectedStudent.Grant}"/>
+        <TextBox HorizontalAlignment="Left" Height="36" Margin="816,197,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167" Text="{Binding SelectedStudent.Course}"/>
+        <ComboBox HorizontalAlignment="Left" Height="36" Margin="816,237,0,0" VerticalAlignment="Top" Width="167" SelectedIndex="{Binding SelectedSex}">
+            <ComboBoxItem Content="Женский"/>
+            <ComboBoxItem Content="Мужской"/>
+        </ComboBox>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="773,37,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="36" Width="38"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="752,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="36" Width="59"/>
+        <Label Content="Группа" HorizontalAlignment="Left" Margin="763,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="36" Width="48"/>
+        <Label Content="Стипендия" HorizontalAlignment="Left" Margin="741,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="36" Width="70"/>
+        <Label Content="Курс" HorizontalAlignment="Left" Margin="773,197,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="36" Width="38"/>
+        <Label Content="Пол" HorizontalAlignment="Left" Margin="773,237,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.411,0.017" Height="36" Width="38"/>
+        <Button Content="Изменить" HorizontalAlignment="Left" Height="35" Margin="857,277,0,0" VerticalAlignment="Top" Width="80" Command="{Binding EditRecordDB}"/>
+        <Label Content="{Binding SelectedStudent.StudentId}" HorizontalAlignment="Left" Margin="816,10,0,0" VerticalAlignment="Top" Width="164"/>
+    </Grid>
+</Window>
